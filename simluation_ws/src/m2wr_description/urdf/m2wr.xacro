@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<robot name="m2wr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find m2wr_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find m2wr_description)/urdf/m2wr.gazebo" />
+  <xacro:include filename="$(find m2wr_description)/urdf/macros.xacro" />
+
+  <link name="dummy">
+     </link>
+
+  <link name="link_chassis">
+    <!-- pose and inertial -->
+    <pose>0 0 0.1 0 0 0</pose>
+    <inertial>
+
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+    </inertial>
+    <!-- body -->
+    <collision name="collision_chassis">
+      <geometry>
+        <box size="0.5 0.3 0.07"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.5 0.3 0.07"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="dummy_joint" type="fixed">
+    <parent link="dummy"/>
+    <child link="link_chassis"/>
+  </joint>
+  <link name="camera_support">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.05"/>
+      <inertia ixx="0.005416667" ixy="0" ixz="0" iyy="0.005416667" iyz="0" izz="0.000416667"/>
+    </inertial>
+    <!-- body -->
+    <collision name="camera_support_collision">
+      <geometry>
+        <box size="0.05 0.05 0.25"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.05"/>
+      <geometry>
+        <box size="0.05 0.05 0.25"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="joint_camera_support" type="fixed">
+    <origin xyz="0.15 0 0.2" rpy="0 0 0" />
+    <parent link="link_chassis" />
+    <child link="camera_support"/>
+  </joint>
+  <link name="camera_box">
+    <inertial>
+      <mass value="0.5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.000002083" ixy="0" ixz="0" iyy="0.000002083" iyz="0" izz="0.000002083"/>
+    </inertial>
+    <!-- body -->
+    <collision name="camera_box_collision">
+      <geometry>
+        <box size="0.005 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.05 0.05"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="joint_camera_box" type="fixed">
+    <origin xyz="0.0275 0 0" rpy="0 0 0" />
+    <parent link="camera_support" />
+    <child link="camera_box"/>
+  </joint>
+
+  <xacro:link_wheel name="link_right_front_wheel" />
+ <xacro:joint_wheel name="joint_right_wheel" child="link_right_front_wheel" origin_xyz="0.25 0.25 0" />
+ <xacro:link_wheel name="link_left_front_wheel" />
+ <xacro:joint_wheel name="joint_left_wheel" child="link_left_front_wheel" origin_xyz="0.25 -0.25 0" />
+ <xacro:link_wheel name="link_right_back_wheel" />
+<xacro:joint_wheel name="joint_right_back_wheel" child="link_right_back_wheel" origin_xyz="-0.25 0.25 0" />
+<xacro:link_wheel name="link_left_back_wheel" />
+<xacro:joint_wheel name="joint_left_back_wheel" child="link_left_back_wheel" origin_xyz="-0.25 -0.25 0" />
+
+</robot>

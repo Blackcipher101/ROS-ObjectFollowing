@@ -1,0 +1,2 @@
+m2wr_description
+-DCATKIN_DEVEL_PREFIX=/home/nehal/woa/simluation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/nehal/woa/simluation_ws/install -G Unix Makefiles

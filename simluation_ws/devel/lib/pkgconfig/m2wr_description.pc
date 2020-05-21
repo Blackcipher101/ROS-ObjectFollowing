@@ -1,0 +1,8 @@
+prefix=/home/nehal/woa/simluation_ws/devel
+
+Name: m2wr_description
+Description: Description of m2wr_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

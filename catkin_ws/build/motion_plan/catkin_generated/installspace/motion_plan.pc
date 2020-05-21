@@ -1,0 +1,8 @@
+prefix=/home/nehal/woa/catkin_ws/install
+
+Name: motion_plan
+Description: Description of motion_plan
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

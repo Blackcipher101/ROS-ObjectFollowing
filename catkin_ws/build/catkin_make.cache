@@ -1,0 +1,2 @@
+motion_plan:rosimg_to_cvimg
+-DCATKIN_DEVEL_PREFIX=/home/nehal/woa/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/nehal/woa/catkin_ws/install -G Unix Makefiles
